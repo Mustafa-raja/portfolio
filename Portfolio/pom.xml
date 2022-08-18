@@ -57,30 +57,24 @@
 		</dependency>
 	</dependencies>
 
-	<build>
- <plugins>
-     <plugin> 
-
-                <!-- Building an executable jar -->
-
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-		<properties>
- 			<maven.compiler.source>1.8</maven.compiler.source>
-			<maven.compiler.target>1.8</maven.compiler.target>
-		</properties>
-                  <archive>
-                    <manifest>
-
-                    <!-- give full qualified name of your main class-->
-                      <mainClass>com.example.demo.PortfolioApplication</mainClass>
-
-                    </manifest>
-                  </archive>
-                </configuration>
-    </plugin>
- </plugins>
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+		<mainClass>com.example.demo.PortfolioApplication</mainClass>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+		<executions>
+        <execution>
+            <goals>
+                <goal>repackage</goal>
+            </goals>
+        </execution>
+    </executions>
+        </plugin>
+    </plugins>
 </build>
-
 </project>
