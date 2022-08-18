@@ -74,7 +74,7 @@
             <configuration>  
                 <archive>  
                     <manifest>  
-                        <mainClass>PortfolioApplication</mainClass>  
+                        <mainClass>com.example.demo.PortfolioApplication</mainClass>  
                     </manifest>  
                 </archive>  
             </configuration>  
