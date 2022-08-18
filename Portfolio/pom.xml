@@ -65,20 +65,13 @@
             <configuration>
                 <source>1.8</source>
                 <target>1.8</target>
-            </configuration>
-        </plugin>
-	    <plugin>  
-            <!-- Build an executable JAR -->  
-            <groupId>org.apache.maven.plugins</groupId>  
-            <artifactId>maven-jar-plugin</artifactId>  
-            <configuration>  
-                <archive>  
+		     <archive>  
                     <manifest>  
                         <mainClass>com.example.demo.PortfolioApplication</mainClass>  
                     </manifest>  
                 </archive>  
-            </configuration>  
-        </plugin> 
+            </configuration>
+        </plugin>
     </plugins>
 </build>
 
