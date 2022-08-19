@@ -69,7 +69,7 @@ public class start {
 				return mv;
 			}
 		}
-		baseURL = "http://localhost:8080/Verify?username="+ encryptThisString(c.getUsername().trim());
+		baseURL = "https://mustafaraja.herokuapp.com/Verify?username="+ encryptThisString(c.getUsername().trim());
 		sender.sendEmail(c.getEmail().trim(), "Congrats!", "You have successfully registered yourself at my first webapp. Click on the below URL to get yourself verified " + baseURL);
 		db.save(c);
 		mv.addObject("val", "<div class=\"alert alert-success\">\n"
