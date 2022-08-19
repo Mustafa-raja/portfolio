@@ -181,7 +181,7 @@ public class start {
 				Email = check.getUsername();
 				check = db.getReferenceById(Email);
 				String rand = java.util.UUID.randomUUID().toString();
-				check.setPassword(encryptThisString(Email));
+				check.setPassword(encryptThisString(rand));
 				db.save(check);
 				sender.sendEmail(check.getEmail().trim(), "Reset!", "Your password has been successfully changed as follows.\nPassword : " + rand);
 				mv.addObject("val", "<div class=\"alert alert-success\">\n"
