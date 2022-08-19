@@ -98,7 +98,7 @@ public class start {
 		while(i.hasNext())
 		{
 			creds check = i.next(); 
-			if(check.getUsername().trim().equals(c.getUsername().toLowerCase().trim()) && check.getPassword().trim().equals(c.getPassword().trim()) && check.isVerify()==true )
+			if( ( (check.getUsername().trim().equals(c.getUsername().toLowerCase().trim()) && check.getPassword().trim().equals(c.getPassword().trim())) || (check.getUsername().trim().equals(c.getEmail().toLowerCase().trim())) && check.getPassword().trim().equals(c.getPassword().trim()) )&& check.isVerify()==true )
 			{
 				
 //				session = request.getSession();
@@ -107,7 +107,7 @@ public class start {
 				return mv;
 			}
 			
-			else if ( check.getUsername().trim().equals(c.getUsername().toLowerCase().trim()) && check.getPassword().trim().equals(c.getPassword().trim()) && check.isVerify()== false )
+			else if ( ( check.getUsername().trim().equals(c.getUsername().toLowerCase().trim()) && check.getPassword().trim().equals(c.getPassword().trim()) || (check.getUsername().trim().equals(c.getEmail().toLowerCase().trim())) && check.getPassword().trim().equals(c.getPassword().trim()) ) && check.isVerify()== false )
 			{
 				mv.addObject("val", "<div class=\"alert alert-warning\">\n"
 						+ "    <strong>Alert!</strong> Your account has not been verified yet!\n"
