@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class start {
-//	HttpSession session;
+	HttpSession session;
 	String baseURL;
 	@Autowired
 	CredsRepo db;
@@ -29,12 +29,17 @@ public class start {
 	
 		ModelAndView mv = new ModelAndView();
 		
-//        session = request.getSession(false);
-//        if(session != null)
-//        {
-//            mv.setViewName("finalpage.jsp");
-//            return mv;
-//        }
+	session = request.getSession(false);
+        if(session == null)
+        {
+        	session = request.getSession();
+        	session.setMaxInactiveInterval(800);
+        } 
+        if(session.getMaxInactiveInterval() == 600)
+        {
+            mv.setViewName("finalpage.jsp");
+            return mv;
+        }
         
 		
 		mv.setViewName("login.jsp");
@@ -86,12 +91,11 @@ public class start {
 	{
 		ModelAndView mv = new ModelAndView();
 
-//		HttpSession session1 = request.getSession(false);
-//        if(session1 != null)
-//        {
-//            mv.setViewName("finalpage.jsp");
-//            return mv;
-//        }
+	if(session.getMaxInactiveInterval() == 600)
+        {
+            mv.setViewName("finalpage.jsp");
+            return mv;
+        }
 		c.setPassword(encryptThisString(c.getPassword().trim()));
 		List<creds> n =  db.findAll();
 		Iterator<creds> i =n.iterator();
@@ -101,8 +105,8 @@ public class start {
 			if( ( (check.getUsername().trim().equals(c.getUsername().toLowerCase().trim()) && check.getPassword().trim().equals(c.getPassword().trim())) || ( (check.getEmail().trim().equals(c.getUsername().toLowerCase().trim())) && check.getPassword().trim().equals(c.getPassword().trim()) ) )&& check.isVerify()==true )
 			{
 				
-//				session = request.getSession();
-//                session.setMaxInactiveInterval(600);
+				
+	                session.setMaxInactiveInterval(600);
 				mv.setViewName("finalpage.jsp");
 				return mv;
 			}
