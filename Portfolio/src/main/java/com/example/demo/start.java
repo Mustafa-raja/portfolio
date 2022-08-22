@@ -90,7 +90,11 @@ public class start {
 	public ModelAndView log (creds c,HttpServletRequest request)
 	{
 		ModelAndView mv = new ModelAndView();
-
+	if(session == null)
+        {
+        	session = request.getSession();
+        	session.setMaxInactiveInterval(800);
+        } 
 	if(session.getMaxInactiveInterval() == 600)
         {
             mv.setViewName("finalpage.jsp");
